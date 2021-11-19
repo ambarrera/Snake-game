@@ -1,2 +1,2 @@
 # Snake-game
-Snake game con clases
+Snake game 
