@@ -1,5 +1,6 @@
 #pragma once
 #include "Snake.h"
+#include <random>
 
 class Board
 {
@@ -9,8 +10,9 @@ public:
 	~Board();
 
 	//Métodos
-	void update();
+	bool update();
 	void draw(char* screen, int screenWidth);
+	int getPoints();
 
 private:
 	//Parámetros
@@ -22,5 +24,9 @@ private:
 
 	//Objetos
 	Snake* snake;
+	Body* food;
+
+	//Métodos
+	void changeFoodPos();
 };
 

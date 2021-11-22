@@ -25,13 +25,15 @@ public:
 
 	//Métodos
 	void draw(char* board, int boardWidth, int boardHeight);
-	void update();
+	bool update(Body* food);
+	bool checkIfSnakeDies(int width, int height);
+
+	int foodEaten;
 
 private:
 	//Parámetros
 	int x, y;
 	char symbol;
-	int foodEaten;
 	Direction facing;
 	int buttocksX, buttocksY;
 

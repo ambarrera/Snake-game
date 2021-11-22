@@ -1,13 +1,24 @@
 #include <iostream>
 #include "Game.h"
+#include <random>
+
 
 int main() {
-	int width;
-	int height;
-	std::cout << "Ingrese ancho y alto: ";
-	std::cin >> width;
-	std::cin >> height;
-	Game game(120, 30, width, height);
+	srand(time(NULL));
+	int Width = 120;
+	int Height = 30;
+	int boardWidth;
+	int boardHeight;
+	std::cout << "SNAKE - GAME\n";
+	std::cout << "Ingrese ancho y alto (max " << Width  << " x " << Height - 5 << "): ";
+	std::cin >> boardWidth;
+	std::cin >> boardHeight;
+	while (boardWidth > Width || boardHeight > Height - 5) {
+		std::cout << "Ingrese otros datos: ";
+		std::cin >> boardWidth;
+		std::cin >> boardHeight;
+	}
+	Game game(Width, Height, boardWidth, boardHeight);
 	game.run();
 
 	return 0;

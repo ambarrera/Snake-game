@@ -25,4 +25,6 @@ private:
 	void updateAllObjects();
 	void updateScreen();
 	void renderScreen();
+	void drawPoints(int x, int y, int points);
+	void drawGameOver();
 };

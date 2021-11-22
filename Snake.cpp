@@ -25,7 +25,7 @@ void Snake::draw(char* board, int boardWidth, int boardHeight) {
 	}
 }
 
-void Snake::update() {
+bool Snake::update(Body *food) {
 	//Cuerpo de la snake
 	if (foodEaten > 0) {
 		buttocksX = body[foodEaten - 1]->x;
@@ -45,8 +45,12 @@ void Snake::update() {
 	handleInput();
 	move();
 	//Checkear si comió
-	if (x == 20) {
+	if (x == food->x && y == food->y) {
 		addButtocks();
+		return true;
+	}
+	else {
+		return false;
 	}
 }
 
@@ -93,17 +97,25 @@ void Snake::addButtocks() {
 			newBody[i] = body[i];
 		}
 		newBody[foodEaten - 1] = new Body(buttocksX, buttocksY);
-		/*
-		for (int i = 0; i < foodEaten - 1; i++) {
-			delete[] body[i];
-		}
-		delete[] body;
-		*/
 		body = newBody;
 		newBody = nullptr;
 	}
 	else {
 		body = new Body*[1];
 		body[0] = new Body(buttocksX, buttocksY);
+	}
+}
+
+bool Snake::checkIfSnakeDies(int width, int height) {
+	if (x < 0 || width < x || y < 0 || height < y) {
+		return false;
+	}
+	else {
+		for (int i = 0; i < foodEaten; i++) {
+			if (x == body[i]->x && y == body[i]->y) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
