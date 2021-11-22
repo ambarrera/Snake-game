@@ -17,6 +17,8 @@ private:
 	int width;
 	int height;
 	bool running;
+
+	//Objetos
 	Board *board;
 
 	//Métodos

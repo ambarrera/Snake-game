@@ -9,9 +9,11 @@ Game::Game(int width, int height, int boardWidth, int boardHeight) {
 	for (int i = 0; i < width * height; i++) {
 		screen[i] = ' ';
 	}
+	//Tablero
 	int boardX = (width / 2) - (boardWidth / 2);
 	int boardY = 0;
 	board = new Board(boardWidth, boardHeight, boardX, boardY);
+
 	running = true;
 }
 
@@ -32,6 +34,7 @@ void Game::updateAllObjects() {
 	if (GetAsyncKeyState(VK_ESCAPE) & 0x8000) {
 		running = false;
 	}
+	board->update();
 }
 
 void Game::updateScreen() {
